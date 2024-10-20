@@ -1,0 +1,1637 @@
+@import "banrural/icons.css";
+@import "banrural/forms.css";
+@import "banrural/commons.css";
+
+body.login--step-1 {
+  background: #FFF url('../images/bg-login-1.jpg') no-repeat fixed top;
+  background-size: cover;
+}
+body.login--step-2 {
+  background: #FFF url('../images/bg-password.jpg') no-repeat fixed top;
+  background-size: cover;
+}
+body.not-front.login--step-2.section--must-change-psswd,
+body.not-front.section--mustanswer-pwdqas-1,
+body.not-front.login--step-2.section--mustanswer-pwdqas-2 {
+  background: #FFF url('../images/bg-mustanswer-questions.jpg') no-repeat center top;
+  background-size: cover;
+}
+body.not-front.psswd-recovery.section--answer-question {
+  background: #FFF url('../images/bg-answer-q1.jpg') no-repeat center top;
+  background-size: cover;
+}
+body.not-front.psswd-recovery.psswd-recovery-captcha {
+  background: #FFF url('../images/bg-password.jpg') no-repeat center top;
+  background-size: cover;
+}
+body.not-front.login--step-2.section--contact-info {
+  background: #FFF url('../images/bg-answer-q1.jpg') no-repeat center top;
+  background-size: cover;
+}
+
+.ui-widget {
+  font: inherit;
+}
+
+.ui-layout-resizer.ui-layout-resizer-north.ui-layout-resizer-open {
+  display: none !important;
+}
+
+/**
+ * Estilos del header.
+ */
+.headerContainer{
+  background-color:#00853F;
+  border-bottom: 5px solid #F68E1E;
+  color: #FFF;
+  height:100px;
+  overflow: hidden;
+  padding: 18px 2em 0 2em;
+}
+
+  .headerContainer .l-header--branding {
+    float: left;
+    width: 10%;
+  }
+
+  .headerContainer .l-header--right {
+    float: right;
+    width: calc(90% - 1em);
+  }
+
+  .headerContainer a {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+  #date-time-block,
+  #secondary-menu {
+    float: right;
+  }
+
+/**
+ * Estilos para el contenido.
+ */
+.desktop {
+  margin: 0;
+  padding: 0;
+}
+
+/**
+ * Estableciendo valores base para los
+ * distintos panes.
+ */
+#signin_menu_pane {
+  max-width: 481px;
+  margin: auto;
+  margin-top: 7%;
+  width: 92%;
+}
+#logoutPanel_pane {
+  max-width: 481px;
+  margin: auto;
+  margin-top: 2%;
+  width: 92%;
+}
+body.login--step-1 #signin_menu_pane {
+  max-width: 361px;
+}
+
+/**
+ * Informaci贸 de asistencia y derechos reservados.
+ */
+#signin_menu_pane .container {
+  margin-top: 50px;
+  clear: both;
+}
+
+.login--alert--container p{
+	width: 255px;
+}
+
+#loginAlertInfoDivID {
+  font-size: 0.923em;
+  line-height: 18px;
+  margin: auto;
+  width: 244px;
+}
+#loginAlertInfoDivID p:first-child {
+  color: #333;
+  margin-bottom: 23px;
+  padding-left: 45px;
+  position: relative;
+}
+#loginAlertInfoDivID p:first-child::after {
+  background-color: #CCC;
+  content: "";
+  display: inline-block;
+  height: 34px;
+  left: 37px;
+  position: absolute;
+  top: 0;
+  width: 1px;
+}
+
+#loginAlertInfoDivID p:last-child {
+  color: #666;
+  font-size: 0.846em;
+  line-height: 13px;
+  text-align: center;
+}
+
+/**
+ * Formato campos requeridos.
+ */
+#message--required-fields {
+  border-bottom: 1px solid #f68E1E;
+  color: #666;
+  font-size: 10px !important;
+  line-height: 1.2em;
+  margin: auto;
+  margin-bottom: 28px;
+  padding-bottom: 7px;
+  text-align: center;
+  width: 235px;
+}
+
+/**
+ * Estilos globales aplicados al pane.
+ ***************************************/
+
+/**
+ * Pane
+ */
+#signin_menu_pane {
+  background-color: #E6E6E6;
+  height: auto;
+  /*max-width: 356px;
+  margin: 40px 0px 0px 5%;
+  width: 100%;*/
+}
+
+#logoutPanel_pane{
+  background-color: #E6E6E6;
+  height: auto;
+}
+
+/**
+ * Pane Header
+ */
+#signin_menu_pane .pane-header,
+#signin_menu_pane .pane-content {
+  background-image: none;
+  background-color: #E6E6E6;
+  border: none;
+  margin-bottom: -1px;
+}
+
+#logoutPanel_pane .pane-header,
+#logoutPanel_pane .pane-content {
+  background-color: #E6E6E6;
+  border: none;
+}
+#signin_menu_pane .pane-header {
+    height: 22px;/* Impide que cambie de tama帽o cuando se hace hover al boton de ayuda en la esquina superior derecha*/
+}
+
+#signin_menu #proccessErrorPane a#processErrorBackButtonID2 {
+    padding-top: 8px;/* Alinea verticalmente el boton de contrase帽a incorrecta */
+}
+
+/**
+ * Estilo para el contenedor de formularios.
+ * paso 1.
+ */
+body.login--step-1 #signin_menu_pane .pane-content {
+  height: 100%;
+  padding: 43px 20px 13px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+body.login--step-1 #signin_menu_pane form {
+  margin-top: 70px;
+}
+
+body.login--step-1 #loginInputDivID {
+  text-align: left;
+}
+
+body.login--step-1 #userNameInputDivID {
+  float: left;
+  max-width: 169px;
+  width: 100%;
+}
+body.login--step-1 .form-actions {
+  margin-top: 31px;
+  float: right;
+}
+#userNameErrorDivID {
+  clear: both;
+}
+
+/**
+ * Estilo para el formulario de contrasenia.
+ ************************************************/
+#password-strength-indicator .psswd-indicator-txt {
+  color: #808080;
+  position: relative;
+  top: 12px;
+}
+body.login--step-2 #signin_menu_pane {
+  height: auto;
+  /*margin: 40px auto;
+  max-width: 481px;
+  width: 100%;*/
+  margin-bottom: 2%;
+}
+
+body.login--step-2 #signin_menu_pane .pane-content {
+  color: #333;
+  height: 100%;
+  padding: 5px 40px 12px 40px;
+  text-align: justify;
+}
+
+#logoutPanel_pane .pane-content {
+  color: #333;
+  height: 100%;
+  padding: 5px 40px 12px 40px;
+  text-align: justify;
+}
+
+#passwordStep .tips {
+  line-height: 18px;
+}
+#passwordStep strong {
+  font-size: 1em;
+}
+#passwordStep .tip-1 {
+  margin-bottom: 35px;
+}
+#passwordStep .tip-1 strong {
+  font-size: 1.0769em;
+}
+
+body.login--step-2 #container--captcha {
+  width: 100%;
+}
+body.login--step-2 .field--name--captcha {
+  margin: 2em 0;
+}
+
+body.login--step-2 .image-warning {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+body.login--step-2 strong {
+  font-family: 'Poppins-SemiBold';
+}
+
+body.login--step2 #signin_menu_pane form {
+  margin-top: 58px;
+}
+
+#signin_menu_pane.step-2 .field-item {
+  /*float: left;
+  width: 169px;*/
+}
+
+/*
+#signin_menu_pane.step-2 .form--button {
+  width: 136px;
+}
+*/
+
+#signin_menu_pane.step-2 .form-elements {
+  margin: auto;
+  margin-top: 4em;
+  /*width: 324px;*/
+}
+
+#signin_menu_pane.step-2 .password-forgot {
+  clear: both;
+  color: #00853F;
+  float: left;
+  font-size: 0.7692em;
+  line-height: 12px;
+  margin-top: 2em;
+  text-align: center;
+  width: 100%;
+  /* width: 169px; desktop */
+}
+
+#signin_menu_pane.step-2 #LookupForm,
+#signin_menu_pane.step-2 #notretail {
+  display: none;
+}
+
+/**
+ * Recuperacion de contrsenia: seleccion de medios.
+ */
+body.psswd-recovery {
+  background: transparent url('../images/bg-psswd-recovery-1.jpg') no-repeat center top;
+  background-size: cover;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery {
+  color: #333;
+  left: 0;
+  margin: 40px auto;
+  max-width: 481px;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery .pane-content {
+  padding: 1px 40px 40px 40px;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery .msg-description {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery .msg-description h3 {
+  font-family: 'Poppins-SemiBold';
+  font-size: 1.0769em;
+  line-height: 18px;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery .msg-description p {
+  font-size: 1em;
+  line-height: 18px;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery .form-item {
+  margin: auto;
+  margin-bottom: 1em;
+  width: 315px;
+}
+
+body.psswd-recovery #signin_menu_pane .code--instrucctions {
+  color: #666666;
+  font-size: 0.84611em;
+  line-height: 13px;
+  margin-top: 2em;
+}
+
+body.psswd-recovery #signin_menu_pane.psswd-recovery .form-actions {
+  float: none;
+  text-align: center;
+  width: 100%;
+}
+
+body.psswd-recovery #captchaForm .captcha {
+  margin-bottom: 3em;
+}
+#captchaForm div#UserNameError {
+    font-size: 10px;
+}
+#passwordRecoveryValidate .message--error.form--error {
+    font-size: 10px;
+    padding-top: 6px;
+}
+#captchaForm a#validate {
+    width: 133px;
+    padding-left: 43px;
+}
+#passwordRecoveryValidate a#contPasswordRecoveryValidate {
+    width: 133px;
+    padding-left: 43px;
+}
+
+/**
+ * Estilo al proceso de validaci贸n
+ */
+#validateOwenerShipStep1 #passwordRecoveryValidate{
+  color: #333;
+  margin-top: 0;
+}
+
+#validateOwenerShipStep1 .main-instructions {
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+#validateOwenerShipStep1 .main-instructions h3 {
+  font-family: 'Poppins-SemiBold';
+  font-size: 1.0769em;
+  line-height: 18px;
+}
+
+#validateOwenerShipStep1 .instructions {
+  font-size: 1em;
+  line-height: 18px;
+padding-left:0px;
+}
+
+#validateOwenerShipStep2 #passwordRecoveryValidate{
+  color: #333;
+  margin-top: 0;
+}
+
+#validateOwenerShipStep2 .main-instructions {
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+#validateOwenerShipStep2 .main-instructions h3 {
+  font-family: 'Poppins-SemiBold';
+  font-size: 1.0769em;
+  line-height: 18px;
+}
+
+#validateOwenerShipStep2 .instructions {
+  font-size: 1em;
+  line-height: 18px;
+  padding-left:0px;
+}
+
+/**
+ * Formulario para reseteo de la contrasenia
+ */
+#signin_menu #passwordRecoveryReset .form-label .sectionhead,
+#signin_menu #passwordRecoveryReset .form-label .required,
+.main-instructions.psswd-reset h3 {
+  color: #333;
+  font-family: 'Poppins-Medium';
+  font-size: 14px;
+  fong-weight: 300;
+  line-height: 18px;
+}
+
+.main-instructions.psswd-reset p {
+  font-size: 12px;
+  line-height: 18px;
+  margin-top: 0;
+}
+
+#signin_menu #passwordRecoveryReset {
+  margin: auto;
+  margin-top: 2em;
+  max-width: 315px;
+  width: 100%;
+}
+
+.main-instructions.psswd-reset {
+  text-align: left;
+}
+
+#passwordRecoveryReset #password-strength-indicator ul li {
+  width: 33%;
+}
+
+
+/**
+ * Estilo para maximo intentos alcanzados.
+ */
+#psswd-recovery-exceeded .message--warning{
+  background: #F68E1E;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFF;
+  line-height: 1.4em;
+  padding: 20px 18px 20px 80px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.message--warning span{
+	background: transparent url('../images/icon-circle-warning.png') no-repeat;
+	width: 30px;
+	height: 30px;
+	left: 21px;
+	position: absolute;
+	top: 18px;
+}
+
+.message--warning p{
+	margin: 0;
+	padding: 0;
+}
+
+/**
+*Estilo para limite de envio de c锟絛igo
+*/
+#mensajeLimiteEnvioCodigo .message--warning{
+  background: #F68E1E;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFF;
+  line-height: 1.4em;
+  padding: 20px 18px 20px 80px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+#mensajeLimiteEnvioCodigo .message--warning p{
+  text-align: left;
+}
+/**
+*Estilo para limite de intentos
+*/
+#mensajeLimiteIntentos .message--warning{
+  background: #F68E1E;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFF;
+  line-height: 1.4em;
+  padding: 20px 18px 20px 80px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+#mensajeLimiteIntentos .message--warning p{
+  text-align: left;
+}
+/**
+*Estilo para usuario desbloquiado
+*/
+#mensajeUsuarioDesbloqueado .message--warning{
+  background: #F68E1E;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFF;
+  line-height: 1.4em;
+  padding: 20px 18px 20px 80px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+#mensajeUsuarioDesbloqueado .message--warning p{
+  text-align: left;
+}
+/**
+*Logout Panel
+*/
+#logoutPanel
+/**
+*Estilos para Browser no soportado
+*/
+
+.invalid--browser .message--warning{
+  background: #F68E1E;
+  font-size: 12px;
+  line-height: 14px;
+  color: #FFF;
+  line-height: 1.4em;
+  padding: 20px 10px 20px 49px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.invalid--browser .message--warning span{
+	top: 11px;
+	left: 15px;
+}
+.invalid--browser .message--warning p{
+  color: #FFF;
+}
+.invalid--browser p {
+  color:#333;
+  font-weight:300;
+}
+
+.invalid--browser .message--warning p{
+	margin: 0;
+	padding: 0;
+	text-lign: center;
+}
+
+.invalid--browser #signin_menu_pane .pane-content{
+	padding: 20px 20px 13px 20px;
+}
+
+
+
+/**
+ * Estilo para el pane de bloqueo de cuenta.
+ */
+#signin_menu .invalid-captcha {
+  margin-top: 2.5em;
+}
+#signin_menu .invalid-captcha .form-actions {
+  text-align: center;
+  width: 100%;
+}
+
+/**
+ * Formulario reinicio preguntas de seguridad
+ */
+#security-questions--change .instructions {
+  padding: 0;
+}
+#security-questions--change .instructions h3 {
+  color: #333;
+  font-family: 'Poppins-SemiBold';
+  font-size: 14px;
+  line-height: 18px;
+}
+#security-questions--change .instructions p {
+  font-size: 13px;
+  line-height: 18px;
+}
+#security-questions--change .form-item {
+  margin-bottom: 1.5em;
+}
+#security-questions--change .form-text {
+  width: 100% !important;
+}
+#security-questions--change .form-actions a {
+  padding-left: 45px;
+}
+
+/**
+ * Aceptacion de terminos y condiciones
+ */
+.not-front.section--terms-and-conditions {
+  background: #FFF url('../images/bg-password.jpg') no-repeat center 0em;
+  background-size: cover;
+}
+
+#overlay {
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 400px;
+  left: 0;
+  position: relative;
+  top: 0;
+  width: 200px;
+  z-index: 0;
+}
+
+.not-front.section--terms-and-conditions #termsAndConditions_pane {
+  backgroud: no-repeat fixed 0em;
+  background-color: #FFF;
+  height:480px;
+  left: 0;
+  width: 65%;
+  top: 2px;
+  margin: auto;
+  position: absolute;
+  overflow-y: auto;
+  right: 0;
+  bottom: 2px;
+  z-index: 1;
+}
+
+.not-front.section--terms-and-conditions #termsAndConditions_pane .pane-header {
+  display: none;
+}
+.not-front.section--terms-and-conditions #termsAndConditions {
+  border: none !important;
+  padding: 29px;
+}
+
+.not-front.section--terms-and-conditions #termsAndConditions_pane h1,
+.not-front.section--terms-and-conditions #termsAndConditions_pane h2,
+.not-front.section--terms-and-conditions #termsAndConditions_pane h3,
+.not-front.section--terms-and-conditions #termsAndConditions_pane h4 {
+  font-family: 'Poppins-SemiBold';
+  text-decoration:none;
+}
+
+.not-front.section--terms-and-conditions #termsAndConditions_pane h1 {
+  font-size: 1.0769em;
+  margin: 19px 0;
+}
+.not-front.section--terms-and-conditions #termsAndConditions_pane h2 {
+  font-size: 1.2727em;
+  text-align:center;
+}
+.not-front.section--terms-and-conditions #termsAndConditions_pane h3 {
+
+}
+.not-front.section--terms-and-conditions #termsAndConditions_pane h4 {
+  font-size: 1em;
+}
+
+.not-front.section--terms-and-conditions #termsAndConditions .content {
+  color: #333;
+  font-size: 0.7857em;
+  height: 250px;
+  margin-bottom: 1em;
+  overflow-y: scroll;
+  padding: 0 44px;
+  text-align: justify;
+  width: 100%;
+}
+
+.not-front.section--terms-and-conditions #termsAndConditions .content p {
+  max-width: initial;
+}
+
+/**
+ * Estilo pagina: registro de informacion
+ */
+#contact-register-info h1 {
+  font-family:'Poppins-SemiBold';
+  font-size:1.0769em;
+  margin-top: 2em;
+}
+#contact-register-info .form-item {
+  margin-bottom: 30px;
+}
+#contact-register-info .form-actions {
+  margin-top: 2.5em;
+}
+
+/**
+ * Formulario de reinicio de contrase帽a.
+ */
+#must-psswd-change .psswd-instructions {
+  color: #666;
+  margin: 29px auto 35px auto;
+  font-size: 0.8461em;
+  text-align: center;
+}
+#must-psswd-change .form-item {
+  margin-bottom: 30px;
+}
+#must-psswd-change #pswdChangeFormID {
+  margin: auto;
+  margin-top: 2.5em;
+}
+#must-psswd-change #password-strength-indicator ul li,.weak >li,.weak li {
+  width: 33%;
+}
+
+#must-psswd-change .form-actions a:nth-child(2){
+	margin-left: 1em;
+}
+
+#must-psswd-change .form-actions a:last-child{
+	margin-top: 1em;
+	padding-left: 45px;
+}
+
+/**
+ * usuario no utenticado.
+ */
+.not-front.section--no-authenticate {
+  background: #FFF url('../images/bg-password.jpg') no-repeat center 0em;
+  background-size: cover;
+}
+
+.section--no-authenticate #signin_menu_pane  {
+  margin: 40px auto;
+  left: 0;
+  max-width: 482px !important;
+  right: 0;
+}
+
+.section--no-authenticate #signin_menu_pane .pane-content {
+    padding: 20px 30px 30px 30px;
+    width: auto;
+}
+
+.section--no-authenticate #signin_menu_pane .pane-content span {
+    display: inline-block;
+}
+
+.section--no-authenticate #signin_menu_pane .message--error p {
+    display: inline-block;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.section--no-authenticate #signin_menu_pane .pane-content .icon--button {
+  margin-right: 20px;
+}
+
+/**
+ * Estilo para los modals
+ */
+.ui-dialog-titlebar.ui-widget-header,
+#localtabs .ui-tabs-nav.ui-helper-reset,
+#localtabs .ui-tabs-nav.ui-helper-reset .ui-state-active {
+  background-color: transparent;
+  border: none;
+  font-weight: 300;
+}
+
+#localtabs .ui-tabs-nav.ui-helper-reset .ui-state-active {
+  color: #333 !important;
+  font-family: 'Poppins-SemiBold';
+  font-weight: 600;
+}
+
+.ui-dialog #security,
+.ui-dialog #localtabs,
+.ui-dialog #localtabs ul {
+  padding-top: 0 !important;
+}
+
+.ui-dialog #security {
+  padding: 0;
+}
+
+#localtabs .ui-tabs-nav.ui-helper-reset {
+  font-size: 1em;
+  height: 34px;
+  margin: auto;
+  width: 98% !important; /* 341px !important; */
+
+  /*Flex*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  -webkit-box-shadow:  0 8px 6px -6px rgba(185, 182, 182, 0.9);
+  -moz-box-shadow:     0 8px 6px -6px rgba(185, 182, 182, 0.9);
+  box-shadow:          0 8px 6px -6px rgba(185, 182, 182, 0.9);
+}
+
+#localtabs .ui-tabs-nav.ui-helper-reset,
+#localtabs .ui-tabs-nav.ui-helper-reset ul,
+#localtabs .ui-tabs-nav.ui-helper-reset a {
+  color: inherit;
+}
+
+#localtabs .ui-tabs-nav.ui-helper-reset li:nth-of-type(2) {
+  border-left: 1px solid #333 !important;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0 !important;
+  border: none;
+}
+
+#localtabs .ui-tabs-nav.ui-helper-reset li:nth-of-type(3),
+#localtabs .ui-tabs-nav.ui-helper-reset li:nth-of-type(4) {
+  display: none !important;
+}
+
+.ui-dialog.ui-widget #security.ui-dialog-content {
+  color: #333;
+  font-size: 1em;
+  max-width: 648px;
+  margin: auto;
+  width: 100% !important;
+}
+
+.ui-dialog #localtabs {
+  border: none;
+  border-top: 1px solid #00853F;
+  color: inherit;
+  font-size: 1em !important;
+  text-align: justify;
+  overflow:visible;
+}
+.ui-dialog.ui-widget #localtabs .ui-tabs-nav li {
+  width: 50%;
+}
+.ui-dialog.ui-widget #localtabs .ui-tabs-nav a {
+  display: block;
+  font-size: 0.8em;
+  text-align: center;
+  padding-top: 1em;
+  width: 100%;
+}
+.ui-dialog.ui-widget #security.ui-dialog-content #tone.ui-tabs-panel ,
+.ui-dialog.ui-widget #security.ui-dialog-content #ttwo.ui-tabs-panel {
+  color: inherit;
+  font-size: 0.6875em;
+  line-height: 1.5em;
+  width: 100%;
+}
+.ui-dialog.ui-widget #security.ui-dialog-content .ui-tabs-panel ul {
+	list-style-position: inside;
+}
+.ui-dialog.ui-widget #security .ui-tabs-panel li {
+  list-style-type: disc;
+}
+
+.ui-dialog.ui-widget #security .col-left {
+  float: left;
+  width: calc(50% - 1em);
+}
+
+.ui-dialog.ui-widget #security .col-right {
+  float: right;
+  width: calc(50% - 1em);
+}
+
+.ui-dialog.ui-widget h4 {
+  font-family: 'Poppins-SemiBold';
+}
+.ui-dialog.ui-widget #security p {
+  margin-bottom: 2em;
+}
+
+.ui-dialog-buttonpane.ui-widget-content {
+  text-align: center;
+  border: none;
+  min-height: 50px !important;
+}
+
+
+
+.ui-dialog-buttonpane button.ui-button {
+  background: #00853f;
+  border: none;
+  color: #FFF;
+  height: 35px;
+  /*width: 141px;*/
+  padding: 10px 13px 10px 45px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.ui-dialog-buttonpane button.ui-button:hover {
+  background: #F68E1E;
+}
+
+/**
+ * Dialogo de cambio de contrasenia exitoso.
+ */
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #FFF;
+  max-width: 315px;
+  width: 100%;
+}
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane hr {
+  margin: 1.5em 0;
+}
+
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane .header,
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane .content {
+  text-align: center;
+}
+
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane .content {
+  font-family: 'Poppins-Regular';
+  padding: 22px 20px
+}
+
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane .footer {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2em;
+}
+
+.not-front.section--must-changepasswordd-confirm #signin_menu_pane .footer form {
+  margin-top: 0;
+}
+
+/**
+ * pane widget
+ */
+.pane-header {
+  position: relative;
+  margin-top: 1px;
+  padding-left: .3em;
+  padding-top: .2em;
+  padding-bottom:.2em;
+  padding-right: .3em;
+  zoom: 1;
+  height: 20px;
+}
+
+.pane .pane-header-active {
+  border-bottom: 0 !important;
+}
+
+.pane-header .pane-title {
+  color: transparent;
+  float: left;
+  cursor: pointer;
+  font-size: 0.6875em;
+  line-height: 0.6875em;
+  padding-left: .3em;
+  padding-top: 1px;
+}
+
+.pane-header span.pane-title::selection{
+  background: transparent;
+  color: transparent;
+}
+
+
+
+.pane-header .ui-icon {
+    float: right;
+}
+
+.pane-header .headerctls {
+  float: right;
+}
+
+.pane-header .ctllink {
+  border: 1px none;
+    width: 16px;
+  float: right;
+}
+
+.ui-widget-header {
+  font-size: 1.1em;
+  padding: 4px 1em 1px !important;
+  height: 19px;
+}
+
+.ui-widget-header > span {
+    padding-top: 2px;
+}
+
+/*TERMNS AND CONDITIONS DECLINE*/
+body.termns-and-conditions-decline {
+  background: #FFF url('../images/bg-password.jpg') no-repeat center 0em;
+  background-size: cover;
+}
+
+body.termns-and-conditions-decline #termsAndConditions_pane{
+  background-color: #E6E6E6;
+  height: auto;
+  margin: 40px auto;
+  max-width: 481px;
+  width: 100%;
+}
+
+body.termns-and-conditions-decline #termsAndConditions_pane .pane-header{
+  background-color: transparent;
+  border: none;
+}
+
+body.termns-and-conditions-decline #termsAndConditions_pane .pane-content {
+    background-color: transparent;
+    border: none;
+    color: #333;
+    height: auto;
+    padding: 5px 40px 40px 40px;
+}
+
+body.termns-and-conditions-decline #termsAndConditions_pane .pane-content h3 {
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Poppins-SemiBold';
+}
+
+body.termns-and-conditions-decline #termsAndConditions_pane strong{
+  font-size: 1em;
+}
+
+body.termns-and-conditions-decline #termsAndConditions_pane p{
+    max-width: 290px;
+    margin: auto;
+    text-align: center;
+}
+
+body.termns-and-conditions-decline .form-actions a:first-child {
+  margin-right: 1em;
+}
+
+.va-b-text{
+  margin-top:5px;
+}
+
+@media (min-width: 20em ) and (max-width: 64em) {
+  .ui-dialog.ui-widget {
+    height: 80vh!important;
+    left: 0!important;
+    right: 0!important;
+    margin: 5vh auto!important;
+    overflow: auto!important;
+    top: 0!important;
+  }
+}
+
+@media (min-width: 20em ) and (max-width: 47em) {
+  /*Login*/
+  .pane-header {
+    color: transparent;
+  }
+
+  /*#signin_menu_pane , #signin_menu_pane.step-2{
+    max-width: 315px!important;
+    margin: 40px auto;
+  }*/
+
+  #signin_menu_pane #userNameInputDivID {
+    width: 45%;
+  }
+
+  /*Password*/
+  #signin_menu_pane.step-2 .pane-content {
+    overflow: hidden;
+  }
+
+  #signin_menu_pane.step-2 .field--name-password {
+      /*flex-basis: 40%;
+      margin-right:10px;*/
+  }
+  /*#signin_menu_pane.step-2 .password-forgot {
+      flex-basis: 30%;
+  }*/
+  #signin_menu_pane.step-2 .form-elements {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  #signin_menu {
+    padding: 20px!important;
+  }
+   /* #signin_menu .form-actions {
+  Comentado por Paolo Grimaldi porque el boton aparecia a la izquierda en moviles
+  display: flex;
+  }*/
+
+  /*Panes Padres*/
+  .ui-layout-center, .ui-layout-resizer, .ui-widget-overlay, .ui-dialog {
+    width: 100%!important;
+  }
+
+  .ui-dialog {
+    margin: 0.5em;
+  }
+
+
+  /*Body*/
+  .login--step-1, .login--step-2{
+    min-width: 100%!important;
+  }
+
+  /*Dialog*/
+  .ui-dialog.ui-widget #security .col-right ,
+  .ui-dialog.ui-widget #security .col-left {
+    width: 100%;
+  }
+
+  /*Password Recovery*/
+  body.psswd-recovery #signin_menu_pane.psswd-recovery{
+      max-width: 95%;
+  }
+
+  body.psswd-recovery #signin_menu_pane.psswd-recovery .form-item{
+    width: 100%;
+  }
+
+  /*Fix para el popup de ayuda */
+ .ui-button .ui-widget .ui-state-default .ui-corner-all .ui-button-text-only
+  {
+    font-size: 12px!important;
+  }
+
+  #btnSendCode
+  {
+    height: 35px!important;
+  }
+
+  #btnBackMain
+  {
+     height: 35px!important;
+  }
+}
+
+/*Terminos y Condiciones*/
+.terms-text-fix{
+	width: 257px !important;
+}
+
+.terms-text-fix p:first-child{
+	font-size: 12px;
+}
+
+.terms-text-fix p:last-child{
+	font-size: 10px !important;
+}
+
+#termsAndConditions #loginAlertInfoDivID p:first-child::after {
+	left: 42px !important;
+}
+
+/*Estilos Generales*/
+
+.text--center{
+	text-align:center;
+}
+
+
+/* * * ESTILOS DE LOGIN CON VERIFICACI覰 DE IMAGEN  * * */
+body.lgn-security-image #signin_menu_pane .pane-content {
+    padding: 5px 20px 12px 20px!important;
+}
+body.lgn-security-image .image-warning {
+    float: right;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+body.lgn-security-image .tips {
+    line-height: 18px;
+    margin-top: 0;
+}
+#passwordStep .tip-1 {
+    text-align: left;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+body.lgn-security-image .image-warning img {
+    width: 60px;/* hay que quitarle el ancho y el alto el html*/
+    height: 55px;
+}
+#signin_menu_pane.step-2 .form-elements {
+    margin: auto;
+    margin-top: 4em;
+    /* width: 324px; */
+}
+body.lgn-security-image .form-elements-float {
+	float: left;
+	width: 100%;
+}
+body.lgn-security-image .form-elements-float.form-elements-float-right {
+	margin-bottom: 50px;/* A馻de margen en la versi髇 m髒il */
+}
+body.lgn-security-image .form-elements-float .field-item {
+    width: 100%;/* Coloca el campo al ancho de la columna */
+}
+body.lgn-security-image div#login2ButtonDivID.form-actions {
+	margin-top: 0;/* Quita el margen sobre el bot髇 */
+}
+figure.securityImage {
+	width: 128px;
+	height: 128px;
+	background: gray;
+	margin-bottom: 15px;
+}
+.securityPhrase {
+	font-size: 12px;
+    margin-top: 15px;
+    word-wrap: break-word;
+}
+
+/* * * ESTILOS ESTABLECER IMAGEN FRASE * * */
+body.imagen-frase #signin_menu_pane {
+    /*height: calc(100% - 50px);*/
+    height: auto;
+    overflow: auto;
+    width: 100%;
+    margin: 25px auto;
+    max-width: 830px;
+    background-color: #E6E6E6;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+div#ImagePhraseNew {
+    font-size: 12px;
+    text-align: justify;
+}
+#ImagePhraseNew  h2 {
+    font-weight: 300;
+    font-family: 'Poppins-SemiBold';
+    font-size: 1.0769em;
+    margin-bottom: 30px;
+}
+
+#ImagePhraseNew .form-item {
+    margin-bottom: 25px;
+}
+
+#ImagePhraseNew div#cI {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 310px;
+}
+
+#ImagePhraseNew div#tablero1 {
+    width: 100%;
+    margin: 30px 0;
+}
+
+#ImagePhraseNew .instructions {
+	position: relative;
+    top: 5px;
+    padding: 0!important;
+    font-family: 'Poppins-Light',segoe ui,Arial,sans-serif;
+    text-align: left;
+}
+
+#ImagePhraseNew a.button {
+    text-transform: uppercase;
+}
+#ImagePhraseNew .form-actions{
+	margin-bottom: 30px;
+}
+.field--name-fraseSecurity div#fraseSecurityError {
+    margin-bottom: 8px;/*agrega espacio entre mensaje de error y nota*/
+}
+#imagenDefault {
+    text-align: center;
+    padding: 3em  0;
+    font-size: 16px;
+    color: #666666;
+    min-height: 196px;
+    line-height: 1.3;
+}
+
+#imagenDefault > div {
+    padding-top: 1em;
+}
+span#ImagenSec {
+    display: block;
+    text-align: center;
+}
+
+
+
+
+
+@media (min-width: 20em ) and (max-width: 35em) {
+  #termsAndConditions_pane{
+    width: 90%
+  }
+}
+
+/**
+ * Screen size 768px and later.
+ */
+@media (min-width: 48em) {
+  /**
+   * Estilo para el contenedor de formularios.
+   */
+  #signin_menu_pane {
+    margin-top: 2%;
+    width: 100%;
+  }
+
+  .login--step-1 #signin_menu_pane {
+    left: 108px;
+    max-width: 368px;
+    position: relative;
+    margin: 40px 0 0 0;
+  }
+
+  .footer{
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+  }
+
+  input.ui-widget-content {
+    overflow: hidden;
+  }
+
+  .errorLabel {
+      color: red;
+    font-size: 10px;
+  }
+  .hidden{
+    display:none;
+  }
+  .ui-layout-resizer {
+    background: white;
+  }
+
+  #loadingstatus {
+      width: 100%;
+      padding: 5px;
+      text-align: center;
+      font-weight: bold;
+      display: none;
+  }
+
+  /**
+   * Formulario para ingreso de contrasenia.
+   */
+  body.login--step-2 #container--captcha,
+  body.login--step-2 .form-elements-float {
+    margin: auto;
+    width: 325px;
+  }
+
+  /**
+   * Must change password
+   */
+  #must-psswd-change #pswdChangeFormID {
+    width: 315px;
+  }
+
+  /**
+   * text only button
+   */
+  #notes a.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only span.ui-button-text, div.ui-dialog a.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only span.ui-button-text{
+    padding: 2px 6px 2px 6px !important;
+  }
+
+  input.ui-button.ui-widget.ui-state-default.ui-corner-all {
+    height: 20px;
+    padding: 2px 6px 2px 6px;
+    border: 1px solid #C5DBEC;
+    margin: 0;
+    font-size: 10px;
+  }
+  .labelrequired{
+    color: red; font-family: 'FuturaMdBT'; font-size:10px;
+  }
+  .orange:hover,.orange span:hover{
+    background-color:#F68E1E;
+  }
+
+  /**
+   * Terminos y condiciones.
+   */
+  .not-front.section--terms-and-conditions {
+    background: #FFF url('../images/bg-password.jpg') no-repeat center 0em;
+    background-size: cover;
+  }
+  
+  /* * * ESTILOS DE LOGIN CON VERIFICACI覰 DE IMAGEN * * */
+  /** Login con imagen de seguridad*/
+	body.lgn-security-image #signin_menu_pane .pane-content {
+	    padding: 5px 40px 12px 40px!important;
+	}
+  .col-sm-6 {
+	    width: 50%;
+	    float: left;
+	}
+	body.lgn-security-image #signin_menu_pane.loginImage{
+	    margin-left: 15%;
+	    max-width:680px;
+	}
+	body.lgn-security-image .image-warning {
+	    margin-left: 15px;
+	    margin-bottom: 0;
+	}
+	#passwordStep .tip-1 {
+	    text-align: justify;
+	}
+	body.lgn-security-image .form-elements-float {
+	    width: 50%;
+	    float: left;
+	}
+	body.lgn-security-image .form-elements-float:first-child,
+	body.lgn-security-image .form-elements-float.form-elements-float-right  {
+		float: right;
+	}
+	body.lgn-security-image .form-elements-float.form-elements-float-left {
+	    padding-right: 25px;/* Coloca margen derecho en columna izquierda */
+	}
+	body.lgn-security-image .form-elements-float.form-elements-float-right {
+	    padding-left: 25px;/* Coloca margen izquierdo en columna derecha */
+	    margin-bottom: 0px;/* Quita  margen en la versi髇 m髒il */
+	}
+	div#login2ButtonDivID.form-actions {
+	    float: left;/*Flota el bot髇 a la izquierda */
+	}
+	body.lgn-security-image #signin_menu_pane.step-2 .form-elements-float.form-elements-float-left .password-forgot {
+	    text-align: left;
+	}
+	body.lgn-security-image #signin_menu_pane.step-2 .password-forgot {
+	    text-align: left;
+	}
+	body.lgn-security-image #signin_menu_pane.paneError {
+	    margin-left: auto;/*centra el mensaje de error*/
+	    max-width: 481px;/*resetea el tama駉 del mensaje de error */
+	}
+	/* * * ESTILOS ESTABLECER IMAGEN FRASE * * */
+	#ImagePhraseNew .form-item.field--name-imageSecurity {
+	    float: left;
+	    clear: left;
+	    width: 175px;
+	}
+	
+	#ImagePhraseNew .form-item.field--name-fraseSecurity {
+	    float: right;
+	    width: calc(100% - 195px);
+	    clear: right;
+	}
+	
+	#ImagePhraseNew .form-actions {
+	    float: left;
+	    width: 100%;
+	    clear: both;
+	}
+	span#ImagenSec {
+	    text-align: left;
+	}
+	body.imagen-frase #signin_menu_pane {
+	    width: 90%;
+	}
+}
+
+/**
+ * Breakpoints para definir las imagenes de fondo
+ */
+@media (min-width:1135px) {
+  body {
+    background-position-y: -6em !important;
+  }
+  body.imagen-frase  {
+    background-position-y: 0 !important;
+  }
+}
+
+@media (min-width:1450px) {
+  body {
+    background-position-y: -12em !important;
+  }
+}
+
+
+
+
+/**
+ * FIX PARA LOGIN CON VERIFICACION DE IMAGENES DESKTOP PEQUE袮
+ */
+@media (min-width:768px)and (max-width:1100px) {
+  body.lgn-security-image #signin_menu_pane,
+  body.lgn-security-image #signin_menu_pane.loginImage{
+	    margin-left: auto;
+	}
+
+}
+
+
+/**
+ * ESTILOS PARA INTERNET EXPLORER Para cuando no lea los media queries
+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+	/* Contrase帽a incorrecta */
+	#signin_menu #proccessErrorPane a#processErrorBackButtonID2 {
+	    width: 137px!important;/* correcci贸n ancho del bot贸n */
+	}
+	/* correcci贸n botones cambiar contrase帽a*/
+	#must-psswd-change #pswdChangeFormID a.form--button--next {
+	  width: 134px!important/* correcci贸n ancho del bot贸n */
+	}
+	#must-psswd-change #pswdChangeFormID a.form--button--cancel {
+	  width: 135px!important/* correcci贸n ancho del bot贸n */
+	}
+	/* * * ESTILOS DE LOGIN CON VERIFICACI覰 DE IMAGEN * * */
+  /** Login con imagen de seguridad*/
+	body.lgn-security-image #signin_menu_pane .pane-content {
+	    padding: 5px 40px 12px 40px!important;
+	}
+  .col-sm-6 {
+	    width: 50%;
+	    float: left;
+	}
+	body.lgn-security-image #signin_menu_pane.loginImage{
+	    margin-left: 15%;
+	    max-width:680px;
+	}
+	body.lgn-security-image .image-warning {
+	    margin-left: 15px;
+	    margin-bottom: 0;
+	}
+	#passwordStep .tip-1 {
+	    text-align: justify;
+	}
+	body.lgn-security-image .form-elements-float {
+	    width: 50%;
+	    float: left;
+	}
+	body.lgn-security-image .form-elements-float:first-child {
+		float: right;
+	}
+	body.lgn-security-image .form-elements-float.form-elements-float-left {
+	    padding-right: 25px;/* Coloca margen derecho en columna izquierda */
+	}
+	body.lgn-security-image .form-elements-float.form-elements-float-right {
+	    padding-left: 25px;/* Coloca margen izquierdo en columna derecha */
+	    margin-bottom: 0px;/* Quita  margen en la versi髇 m髒il */
+	}
+	div#login2ButtonDivID.form-actions {
+	    float: left;/*Flota el bot髇 a la izquierda */
+	}
+	body.lgn-security-image #signin_menu_pane.step-2 .form-elements-float.form-elements-float-left .password-forgot {
+	    text-align: left;
+	}
+	body.lgn-security-image #signin_menu_pane.step-2 .password-forgot {
+	    text-align: left;
+	}
+	body.lgn-security-image #signin_menu_pane.paneError {
+	    margin-left: auto;/*centra el mensaje de error*/
+	    max-width: 481px;/*resetea el tama駉 del mensaje de error */
+	}
+	/* * * ESTILOS ESTABLECER IMAGEN FRASE * * */
+	#ImagePhraseNew .form-item.field--name-imageSecurity {
+	    float: left;
+	    clear: left;
+	    width: 175px;
+	}
+	
+	#ImagePhraseNew .form-item.field--name-fraseSecurity {
+	    float: right;
+	    width: calc(100% - 195px);
+	    clear: right;
+	}
+	
+	#ImagePhraseNew .form-actions {
+	    float: left;
+	    width: 100%;
+	    clear: both;
+	}
+	span#ImagenSec {
+	    text-align: left;
+	}
+	body.imagen-frase #signin_menu_pane {
+	    width: 90%;
+	}
+}
+
+
+

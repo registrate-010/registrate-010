@@ -1,0 +1,168 @@
+function customValidation(form, errors) {    		
+		//Now its not mandatory to provide error fields this function will automaticallty create error element
+		var $form = $(form);
+		var formId = $form.attr("id");
+		if(formId){		
+			formId = "#" + formId;			
+			if($(formId +" ul#formerrors").length == 0){
+				$form.prepend("<ul id='formerrors'></ul>");
+			}
+			var list = $(formId +" ul#formerrors");
+			list.html('');
+
+			//The element sitting above all others
+			var $topElement = undefined;
+			
+			//Handle non field errors 
+			if (errors.errors) {
+					$.each(errors.errors, function(index, value) { 
+							$('<li/>').appendTo(list).attr('class','errorLabel').html(getHTMLEncodedString(value));
+							list.append('\n');
+							$topElement = list;
+					});
+			}
+			
+			//Handle field errors 
+			if (errors.fieldErrors) {
+					$.each(errors.fieldErrors, function(index, value){ 
+							index = index.replace(/\./g,'\\.');						
+							if($(formId + ' span#' + index + 'Error').length == 0){
+								//$("<span id='" + index + "Error'></span>").insertAfter($(formId + " [name=" + index + "]" ))
+								addErrorLabel(formId,index);
+							}
+							var elem = $(formId + ' span#' + index + 'Error');
+							if(elem != null && elem.offset() != null) {
+								if(!$topElement || elem.offset().top < $topElement.offset().top){
+									$topElement = elem;
+								}
+								elem.html(getHTMLEncodedString(value[0]));
+								elem.addClass('errorLabel');
+                                $('#' + index + 'ErrorDivID').show();
+							}
+				});
+			}
+			if($topElement){
+				_scrollTo($topElement);
+			}
+
+			if(typeof accessibility !== "undefined"){
+				accessibility.focusToErrorField($form);
+			}  
+		}else{
+			console.warn("Please provide valid form id.");
+		}					
+}
+
+function customValidationThrerd(form, errors) {
+	//Now its not mandatory to provide error fields this function will automaticallty create error element
+	var $form = $(form);
+	var formId = $form.attr("id");
+	if(formId){
+		formId = "#" + formId;
+		if($(formId +" ul#formerrors").length == 0){
+			$form.prepend("<ul id='formerrors'></ul>");
+		}
+		var list = $(formId +" ul#formerrors");
+		list.html('');
+
+		//The element sitting above all others
+		var $topElement = undefined;
+
+		//Handle non field errors
+		if (errors.errors) {
+			$.each(errors.errors, function(index, value) {
+				$('<li/>').appendTo(list).attr('class','errorLabel').html(getHTMLEncodedString(value));
+				list.append('\n');
+				$topElement = list;
+			});
+		}
+
+		//Handle field errors
+		if (errors.fieldErrors) {
+			$.each(errors.fieldErrors, function(index, value){
+				index = index.replace(/\./g,'\\.');
+				if($(formId + ' span#' + index + 'Error').length == 0){
+					//$("<span id='" + index + "Error'></span>").insertAfter($(formId + " [name=" + index + "]" ))
+					addErrorLabel(formId,index);
+				}
+				var elem = $(formId + ' span#' + index + 'Error');
+				if(elem != null && elem.offset() != null) {
+					if(!$topElement || elem.offset().top < $topElement.offset().top){
+						$topElement = elem;
+					}
+					elem.html(getHTMLEncodedString(value[0]));
+					elem.addClass('errorLabel').append($("<span>").addClass("icon icon--message--error"));
+					$('#' + index + 'ErrorDivID').show();
+				}
+			});
+		}
+		if($topElement){
+			_scrollTo($topElement);
+		}
+
+		if(typeof accessibility !== "undefined"){
+			accessibility.focusToErrorField($form);
+		}
+	}else{
+		console.warn("Please provide valid form id.");
+	}
+}
+
+function addErrorLabel(formId,aField){
+	var isDatePicker = false;
+	var isSelect=false;
+	isDatePicker = $(formId + " [name$=" + aField + "]" ).hasClass("hasDatepicker");		 
+	if($(formId + " [name$=" + aField + "]" ).is("select")){
+		if($(formId + " [name$=" + aField + "]:hidden" ).length>0){
+			isSelect=true;
+		}
+	};
+	
+	if(isSelect){
+		//handle select types differently since actual select box is hidden and we see generated select menu.
+		var selectBoxId = $(formId + " [name=" + aField + "]" ).attr("id");
+		$("<br><span id='" + aField + "Error'></span>").insertAfter($(formId + " [id=" + selectBoxId + "-menu]" ));		
+	}else if(isDatePicker){
+		$("<br><span id='" + aField + "Error'></span>").insertAfter($(formId + " [name$=" + aField + "]" ).siblings("img"));//appending label right after cal image
+	}else{
+		$("<br><span id='" + aField + "Error'></span>").insertAfter($(formId + " [name$=" + aField + "]" ));
+	}
+}
+
+function removeValidationErrors(){
+	 $('.errorLabel').html('').removeClass('errorLabel');
+	  //Clean up all the form level validation error messages
+	 $('[id=formerrors]').html("");
+    $('.message--error').hide();
+
+}
+
+
+var _inView = function($elem, viewAll) {
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $elem.offset().top;
+    var elemBottom = elemTop + $elem.height();
+
+    if (viewAll)
+		return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+	else
+		return (elemTop >= docViewTop);
+};
+
+
+var _scrollTo = function($elem){
+	if($('#notes').length>0){
+    var off = $('#notes').offset().top - $elem.offset().top;
+    if(off > 0) //The element is scrolled above the top of notes
+    	$("#notes").animate({scrollTop: $("#notes").scrollTop()-off-15}, {duration:500, easing:"linear"});
+    if(!_inView($('#notes')))
+    	$("html, body").animate({scrollTop: 0}, {duration:500, easing:"linear"}); 
+	}
+};
+//Added this call here as custom.validation is used in jsp-ns pages also and we do not have access to common.js.
+//HTML encode a string, but leave <br> alone since it is often returned in error messages
+var getHTMLEncodedString = function (value){ 
+	return value.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/&lt;br&gt;/g,'<br>');
+};

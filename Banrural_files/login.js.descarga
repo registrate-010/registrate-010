@@ -1,0 +1,296 @@
+function fixIpad() {
+    var isIpad = (/iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase()));
+    if (isIpad) {
+        var listButtons=$(".form--button");
+        $.each(listButtons,function(idx,obj){
+            $(obj).bind('mouseover',function(event,data){
+                $(this).trigger('click');
+            });
+        });
+        $("input").bind('blur',function(){
+            var listButtons=$(".form--button");
+            $.each(listButtons,function(idx,obj) {
+                $(obj).unbind('mouseover');
+            });
+        });
+    }
+}
+setWidth=function(className){
+    var reprocess= false;
+    if (!className){
+        className=".btn-action";
+        reprocess=true;
+    }
+    var widths = $(className).map(function() {
+        var nWidth= isNaN($(this).width())?parseFloat($(this).css('width')):$(this).width();
+        var cWidth = isNaN(parseFloat($(this).css('width')))?$(this).width(): parseFloat($(this).css('width'));
+        return nWidth>cWidth?nWidth:cWidth;
+    }).get();
+    widths.push(128);
+    var maxWidth=Math.max.apply(null, widths);
+    $.each($(className),function(idx,obj){
+        $(obj).width(maxWidth+'px');
+    });
+    if (reprocess){
+        setWidth(".form--button");
+    }
+};
+var loginController = (function () {
+    function _initView() {
+        _initLayout();
+        if (self == top) {
+            document.documentElement.style.display = 'block';
+        } else {
+            top.location = self.location;
+        }
+
+        if ($("#languagesDropdown")) {
+            var iconsArr = new Array();
+            var iconsArrN = 0;
+            $("#languagesDropdown").find('option').each(function () {
+                iconsArr[iconsArrN] = {find: "." + $(this).attr('value')};
+                iconsArrN++;
+            });
+
+            $("#languagesDropdown").selectmenu({
+                icons: iconsArr,
+                width: 200
+            });
+
+        }
+
+
+        //Step1 events
+        setTimeout(function () {
+                $('#focusObj').focus();
+            }
+            , 500);
+
+        $.subscribe('onClickSubmitButton', function () {
+            if (typeof(analytics)=='function' && analytics){
+                analytics($("#focusObj").val());
+            }
+            removeValidationErrors();
+        });
+        $.subscribe('onClickStep2SubmitButton', function () {
+            var isOk = true;
+            $("#passwordError").hide();
+            if ($("#password").val().length === 0) {
+                $("#passwordError").show();
+                isOk = false;
+            }
+
+            if ($("#code").length > 0) {
+                var code = $("#code");
+                if (code.val().length != 6) {
+                    $("#codeError").show();
+                    isOk = false;
+                }
+            }
+            if (!matchAgain){
+                matchAgain='';
+            }
+            if (isOk && matchAgain==2){
+                $('#corpLogin').trigger('click');
+                return false;
+            }
+            return isOk;
+        });
+
+        $.subscribe('loginStep1Success', function () {
+        	// [Walter Herrera]: Establecer la imagen de fondo.
+        	$('body')
+        	  .removeClass('login--step-1')
+        	  .addClass('login--step-2');
+        	
+        	$('#signin_menu_pane')
+        		.removeClass('step-1')
+        		.addClass('step-2');
+            loginController.changeLoginPanelTitle(js_login_step2);
+            $("#password").trigger('focus');
+            if ($("#code").length==1)
+            {
+                $("#code").trigger('focus')
+            }
+        });
+
+
+        $.subscribe('goBackToLoginStep1', function () {
+        	// [Walter Herrera]: Establecer la imagen de fondo.
+        	$('body')
+        		.removeClass('login--step-2')
+        		.addClass('login--step-1');
+        	
+        	$('#signin_menu_page')
+        		.removeClass('step-2')
+        		.addClass('step-1');
+
+            loginController.changeLoginPanelTitle(js_login_step1);
+
+        });
+
+        $.subscribe('loginStep2Success', function () {
+            $("#signin_menu_pane").removeClass("loginImage");
+            }
+        );
+        //$('#stepLabelSpanID').html('<s:text name="jsp.login_48"/>');
+
+        var openSecurityDialog = function () {
+            $("#security").dialog('open');
+            window.setTimeout(function(){
+                if ($(".ui-dialog").height()>window.innerHeight) {
+                    $(".ui-dialog").find('div').css('max-height', window.innerHeight).css('overflow', 'auto');
+                }
+            },2000);
+            // window.setTimeout(function(){
+            //     if ($(".ui-dialog").height()>window.innerHeight) {
+            //         $(".ui-dialog").find('div').css('max-height', window.innerHeight).css('overflow', 'auto');
+            //     }
+            // },1000);
+            // window.setTimeout(function(){
+            //     if ($(".ui-dialog").height()>window.innerHeight) {
+            //        $(".ui-dialog").find('div').css('max-height', window.innerHeight).css('overflow', 'auto');
+            //     }
+            // },500);
+        };
+        $.subscribe('initLoginStep1Pane', function () {
+            $("#signin_menu").pane({
+                "title": js_login_step1,
+                "minmax": false,
+                "close": false,
+                "customIcons": "ui-icon-locked",
+                "customTips": js_tooltip_security,
+                "customCallbacks": openSecurityDialog
+            });
+        });
+        $.subscribe("forgotpasswordStep1Success",function(){
+            $("#signin_menu_pane").removeClass("loginImage");
+        });
+
+        $.subscribe('showProcessErrorPane', function () {
+            loginController.changeLoginPanelTitle(js_bank_title);
+        });
+
+        $.subscribe('showLookupAccountFailedPane', function () {
+            loginController.changeLoginPanelTitle(js_bank_title);
+        });
+
+        $.subscribe('changeLoginPaneTitle', _changeLoginPaneTitle);
+
+    };
+
+    function _setUpConstants(config) {
+        if (config) {
+            if (config.appType) {
+                ns.common.appType = config.appType;
+            }
+
+            if (config.themeName) {
+                var defaultThemeCookie = _getCookie();
+                if (defaultThemeCookie == null) {
+                    _setCookie("DefaultTheme", config.themeName, 30);
+                }
+
+            }
+        }
+    };
+
+    function _getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    };
+
+    function _setCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        }
+        else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/cb";
+    };
+
+
+    function _initLayout() {
+        $('body').layout({
+            north: {
+                size: 100,
+                resizable: false,
+                closable: false
+            },
+            south: {
+                size: 35,
+                resizable: false,
+                closable: false
+            }
+        });
+    };
+    function _registerEvents() {
+        $("#ajaxlink").click(function (e) {
+            $('#bank-page').slideUp('slow', function () {
+                $("#signin_menu").toggleClass("hiddenClass");
+                $('#bank-page').remove();
+            });
+        });
+
+        $("#signin_menu").mouseup(function () {
+            return false;
+        });
+
+        $("#signin_menu").ajaxStart(function () {
+            $('#signin_menu').showLoading();
+        });
+
+        $("#signin_menu").ajaxStop(function () {
+            if (!$('#login-init-target') || !$('#login-init-target').html()) {
+                try{
+                    $('#signin_menu').hideLoading();
+                }catch(exc){
+                }
+            }
+        });
+
+        $("#languagesDropdown").change(_changeLanuageHandler);
+        $.publish("initLoginStep1Pane");
+
+
+    };
+
+    function _changeLanuageHandler() {
+        var lan = $("#languagesDropdown").val();
+        var location;
+        if (ns.common.appType == "EFS") {
+            location = "login-cons.jsp?request_locale=" + lan;
+        } else {
+            location = "login-cons.jsp?request_locale=" + lan;
+        }
+        window.location = location;
+    };
+
+    function _changeLoginPaneTitle(aTitle) {
+        if (aTitle) {
+            $("#signin_menu").pane('title', aTitle);
+        }
+    };
+
+    return {
+        init: function (config) {
+            _initView();
+            _setUpConstants(config);
+            _registerEvents();
+
+        },
+        changeLoginPanelTitle: function (aTitle) {
+            _changeLoginPaneTitle(aTitle);
+        }
+    }
+
+}());
